@@ -3,6 +3,7 @@ node_modules/
 
 # npm
 npm-debug.log
+*.tgz
 
 # macOS
 .DS_Store
@@ -11,7 +12,10 @@ npm-debug.log
 .vscode/
 .idea/
 
-# Build
+# TypeScript
+*.tsbuildinfo
+
+# Build (lib은 배포에 포함되므로 주석 처리)
 dist/
-lib/
+# lib/
 

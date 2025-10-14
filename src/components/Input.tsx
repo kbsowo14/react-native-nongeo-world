@@ -1,7 +1,16 @@
 import React from 'react';
-import { TextInput, View, Text, StyleSheet } from 'react-native';
+import { TextInput, View, Text, StyleSheet, TextInputProps, TextStyle } from 'react-native';
 
-const Input = ({ 
+export interface InputProps extends TextInputProps {
+  placeholder?: string;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  style?: TextStyle;
+  label?: string;
+  error?: string;
+}
+
+const Input: React.FC<InputProps> = ({ 
   placeholder, 
   value, 
   onChangeText, 
@@ -14,14 +23,14 @@ const Input = ({
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
-        style={[styles.input, style, error && styles.inputError]}
+        style={[styles.input, style, error ? styles.inputError : undefined]}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
         placeholderTextColor="#999999"
         {...props}
       />
-      {error && <Text style={styles.errorText}>{error}</Text>}
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
     </View>
   );
 };
