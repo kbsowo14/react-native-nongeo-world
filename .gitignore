@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# npm
+npm-debug.log
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Build
+dist/
+lib/
+
