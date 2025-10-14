@@ -1,0 +1,21 @@
+# 개발용 파일
+node_modules/
+.git/
+.gitignore
+
+# TypeScript 설정
+tsconfig.json
+
+# 테스트 및 예제
+example/
+__tests__/
+
+# 에디터
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
