@@ -1,7 +1,9 @@
 export { default as Button } from './components/Button';
 export { default as Input } from './components/Input';
 export { default as Card } from './components/Card';
+export { default as ArcadeButton } from './components/ArcadeButton';
 export type { ButtonProps } from './components/Button';
 export type { InputProps } from './components/Input';
 export type { CardProps } from './components/Card';
+export type { ArcadeButtonProps } from './components/ArcadeButton';
 //# sourceMappingURL=index.d.ts.map
