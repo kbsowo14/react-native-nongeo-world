@@ -128,6 +128,10 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
           onPressOut={pressOutAnimated}
           onPress={handlePress}
           disabled={disabled || isWaiting}
+          style={{
+            marginBottom: hasBorder ? 4 : 0,
+            paddingTop: thickness || 0,
+          }}
         >
           {/* Around Border Effect */}
           {hasBorder && (
