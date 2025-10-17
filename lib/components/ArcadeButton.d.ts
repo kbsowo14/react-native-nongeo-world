@@ -1,23 +1,19 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { TextStyle, StyleProp } from 'react-native';
 export interface ArcadeButtonProps {
-    wrapStyle?: StyleProp<ViewStyle>;
-    boxStyle?: StyleProp<ViewStyle>;
     buttonText?: string | React.ReactNode;
     buttonTextStyle?: StyleProp<TextStyle>;
     backgroundColor?: string;
     paddingVertical?: number;
     paddingHorizontal?: number;
     buttonRadius?: number | string;
-    wait?: number;
     thickness?: number;
     hasBorder?: boolean;
-    leftIcon?: React.ReactNode;
-    rightIcon?: React.ReactNode;
     disabled?: boolean;
-    isLoading?: boolean;
+    isLoading?: boolean | null;
     onPress?: () => void;
     isFullWidth?: boolean;
+    children?: React.ReactNode;
 }
 declare const _default: React.NamedExoticComponent<ArcadeButtonProps>;
 export default _default;

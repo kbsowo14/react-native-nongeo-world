@@ -11,66 +11,54 @@ import {
 } from 'react-native'
 
 export interface ArcadeButtonProps {
-  wrapStyle?: StyleProp<ViewStyle>
-  boxStyle?: StyleProp<ViewStyle>
   buttonText?: string | React.ReactNode
   buttonTextStyle?: StyleProp<TextStyle>
   backgroundColor?: string
   paddingVertical?: number
   paddingHorizontal?: number
   buttonRadius?: number | string
-  wait?: number
   thickness?: number
   hasBorder?: boolean
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
   disabled?: boolean
-  isLoading?: boolean
+  isLoading?: boolean | null
   onPress?: () => void
   isFullWidth?: boolean
+  children?: React.ReactNode
 }
 
 /**
  * 게임화면에 사용되는 3D 스타일 버튼
- * @param wrapStyle - 외부 감싸는 View 스타일
- * @param boxStyle - 버튼 내부 스타일
  * @param buttonText - 버튼 텍스트 또는 커스텀 컴포넌트
  * @param buttonTextStyle - 버튼 텍스트 스타일
  * @param backgroundColor - 버튼 배경색 (기본: '#f97316')
  * @param paddingVertical - 수직 패딩 (기본: 12)
  * @param paddingHorizontal - 수평 패딩 (기본: 24)
  * @param buttonRadius - 버튼 모서리 둥글기 (기본: 12)
- * @param wait - 연속 클릭 방지 대기시간 (ms)
  * @param thickness - 버튼 두께 (3D 효과, 기본: 8)
  * @param hasBorder - 그림자 테두리 표시 여부 (기본: true)
- * @param leftIcon - 왼쪽 아이콘
- * @param rightIcon - 오른쪽 아이콘
  * @param disabled - 비활성화 여부
- * @param isLoading - 로딩 상태 표시
+ * @param isLoading - 로딩 상태 표시 (null: 로딩 상태 없음, true: 로딩 상태, false: 로딩 상태 아님)
  * @param onPress - 클릭 이벤트 핸들러
  * @param isFullWidth - 전체 너비 사용 여부
+ * @param children - 버튼 내부 컴포넌트
  */
 const ArcadeButton: React.FC<ArcadeButtonProps> = ({
-  wrapStyle,
-  boxStyle,
   buttonText = '',
   buttonTextStyle,
   backgroundColor = '#f97316',
   paddingVertical = 12,
   paddingHorizontal = 24,
   buttonRadius = 12,
-  wait = 250,
   thickness = 8,
   hasBorder = true,
-  leftIcon,
-  rightIcon,
   disabled = false,
-  isLoading = false,
+  isLoading = null,
   onPress,
   isFullWidth = false,
+  children,
+  ...args
 }) => {
   const [currentRadius, setCurrentRadius] = useState<number | null>(null)
-  const [isWaiting, setIsWaiting] = useState(false)
 
   const pressPosition = useRef(new Animated.Value(0)).current
 
@@ -91,25 +79,20 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
   }, [pressPosition])
 
   const handlePress = useCallback(() => {
-    if (isWaiting || disabled || isLoading) return
+    if (disabled || isLoading) return
     
-    if (onPress) {
+    if (typeof onPress === 'function') {
       onPress()
     }
-
-    if (wait > 0) {
-      setIsWaiting(true)
-      setTimeout(() => setIsWaiting(false), wait)
-    }
-  }, [isWaiting, disabled, isLoading, onPress, wait])
+  }, [disabled, isLoading, onPress])
 
   return (
     <View
       style={[
         isFullWidth && { width: '100%' },
         currentRadius === null && { opacity: 0 },
-        wrapStyle,
       ]}
+      {...args}
     >
       <View
         style={hasBorder && { paddingHorizontal: 4 }}
@@ -127,7 +110,7 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
           onPressIn={pressInAnimated}
           onPressOut={pressOutAnimated}
           onPress={handlePress}
-          disabled={disabled || isWaiting}
+          disabled={disabled}
           style={{
             marginBottom: hasBorder ? 4 : 0,
             paddingTop: thickness || 0,
@@ -154,7 +137,6 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
                   height: '100%',
                   position: 'absolute',
                   bottom: 0,
-                  left: 0,
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
@@ -229,7 +211,6 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
                 ],
               },
               isFullWidth && { width: '100%' },
-              boxStyle,
             ]}
           >
             {/* Top Light Effect-Line */}
@@ -265,7 +246,7 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
             </View>
 
             {/* Text Area */}
-            {isLoading && (
+            {isLoading === true && (
               <View
                 style={{
                   position: 'absolute',
@@ -286,25 +267,7 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
                 opacity: isLoading ? 0 : 1,
               }}
             >
-              {!!leftIcon && <View>{leftIcon}</View>}
-              {typeof buttonText === 'string' ? (
-                <Text
-                  style={[
-                    {
-                      textAlign: 'center',
-                      color: '#FFFFFF',
-                      fontWeight: '600',
-                      fontSize: 18,
-                    },
-                    buttonTextStyle,
-                  ]}
-                >
-                  {buttonText || '  '}
-                </Text>
-              ) : (
-                <>{buttonText}</>
-              )}
-              {!!rightIcon && <View>{rightIcon}</View>}
+              {children}
             </View>
           </Animated.View>
         </Pressable>
