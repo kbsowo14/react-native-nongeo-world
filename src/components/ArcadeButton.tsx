@@ -136,7 +136,7 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
                   width: '100%',
                   height: '100%',
                   position: 'absolute',
-                  bottom: 0,
+                  bottom: -4,
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
@@ -146,7 +146,6 @@ const ArcadeButton: React.FC<ArcadeButtonProps> = ({
                     width: 8,
                     height: '100%',
                     backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    transform: [{ translateY: 4 }],
                   }}
                 />
               </View>

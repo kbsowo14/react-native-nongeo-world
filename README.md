@@ -1,94 +1,120 @@
-# react-native-nongeo-world
+<h1 align="center">react-native-nongeo-world</h1>
 
-React Native 컴포넌트 라이브러리 (TypeScript 지원)
+<p align="center">A collection of free and customizable React Native components by Nongeoking.</p>
 
-## ✨ 특징
+---
 
-- 📦 즉시 사용 가능한 React Native 컴포넌트
-- 🎨 깔끔하고 현대적인 디자인
-- 📘 TypeScript로 작성되어 완벽한 타입 지원
-- 🔧 커스터마이징 가능한 스타일
-
-## 설치
+## Installation
 
 ```bash
 npm install react-native-nongeo-world
 ```
 
-또는
+or
 
 ```bash
 yarn add react-native-nongeo-world
 ```
 
-## 사용법
+---
 
-### Button
+## Components
+
+### ArcadeButton
+
+A 3D-styled arcade button component with press animations and customizable appearance.
+
+![ArcadeButton Examples](./public/ArcadeButton_examples.gif)
+
+#### Basic Usage
 
 ```tsx
-import { Button } from 'react-native-nongeo-world';
+import { ArcadeButton } from 'react-native-nongeo-world';
+import { View, Text } from 'react-native';
 
-<Button 
-  title="클릭하세요" 
-  onPress={() => console.log('버튼 클릭!')}
-  disabled={false}
+// Simple button
+<ArcadeButton
+  buttonRadius="100%"
+  wait={50}
+  onPress={() => console.log('Pressed!')}
 />
-```
 
-#### Props
-- `title` (string) - 버튼 텍스트
-- `onPress` (() => void) - 클릭 이벤트 핸들러
-- `style?` (ViewStyle) - 커스텀 버튼 스타일
-- `textStyle?` (TextStyle) - 커스텀 텍스트 스타일
-- `disabled?` (boolean) - 비활성화 여부
-
-### Input
-
-```tsx
-import { Input } from 'react-native-nongeo-world';
-
-<Input
-  label="이메일"
-  placeholder="이메일을 입력하세요"
-  value={email}
-  onChangeText={setEmail}
-  error={error}
+// Button with custom background color
+<ArcadeButton
+  buttonRadius="100%"
+  wait={50}
+  backgroundColor="#3b82f6"
 />
+
+// Button with text content
+<ArcadeButton
+  buttonRadius="100%"
+  wait={50}
+  backgroundColor="#6b7280"
+>
+  <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}>
+    NEXT
+  </Text>
+</ArcadeButton>
+
+// Button with custom children
+<ArcadeButton
+  buttonRadius="100%"
+  wait={50}
+  backgroundColor="#ef4444"
+>
+  <View style={{ width: 1, height: 40 }} />
+</ArcadeButton>
+```
+
+#### Multiple Buttons Layout
+
+```tsx
+<View
+  style={{
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
+    marginVertical: 16,
+  }}
+>
+  <ArcadeButton buttonRadius="100%" wait={50} />
+  <ArcadeButton buttonRadius="100%" wait={50} backgroundColor="#3b82f6" />
+  <ArcadeButton buttonRadius="100%" wait={50} backgroundColor="#10b981" />
+</View>
 ```
 
 #### Props
-- `label?` (string) - 입력 필드 라벨
-- `placeholder?` (string) - 플레이스홀더 텍스트
-- `value?` (string) - 입력 값
-- `onChangeText?` ((text: string) => void) - 텍스트 변경 핸들러
-- `error?` (string) - 에러 메시지
-- `style?` (TextStyle) - 커스텀 입력 필드 스타일
-- 기타 모든 `TextInput` props
 
-### Card
+| Prop                | Type                        | Default     | Description                                            |
+| ------------------- | --------------------------- | ----------- | ------------------------------------------------------ |
+| `buttonText`        | `string \| React.ReactNode` | `''`        | Button text or custom component                        |
+| `buttonTextStyle`   | `StyleProp<TextStyle>`      | `undefined` | Text style for button text                             |
+| `backgroundColor`   | `string`                    | `'#f97316'` | Button background color                                |
+| `paddingVertical`   | `number`                    | `12`        | Vertical padding                                       |
+| `paddingHorizontal` | `number`                    | `24`        | Horizontal padding                                     |
+| `buttonRadius`      | `number \| string`          | `12`        | Border radius (supports percentage values like "100%") |
+| `thickness`         | `number`                    | `8`         | 3D depth effect thickness                              |
+| `hasBorder`         | `boolean`                   | `true`      | Show shadow border around button                       |
+| `disabled`          | `boolean`                   | `false`     | Disable button interaction                             |
+| `isLoading`         | `boolean \| null`           | `null`      | Show loading indicator                                 |
+| `onPress`           | `() => void`                | `undefined` | Press event handler                                    |
+| `isFullWidth`       | `boolean`                   | `false`     | Make button full width                                 |
+| `children`          | `React.ReactNode`           | `undefined` | Custom content inside button                           |
 
-```tsx
-import { Card } from 'react-native-nongeo-world';
-import { Text } from 'react-native';
+---
 
-<Card>
-  <Text>카드 안의 내용</Text>
-</Card>
-```
+## TypeScript Support
 
-#### Props
-- `children` (React.ReactNode) - 카드 내부 컨텐츠
-- `style?` (ViewStyle) - 커스텀 카드 스타일
-
-## TypeScript
-
-모든 컴포넌트는 TypeScript로 작성되었으며, 타입 정의가 포함되어 있습니다.
+All components are written in TypeScript with full type definitions included.
 
 ```tsx
-import { ButtonProps, InputProps, CardProps } from 'react-native-nongeo-world';
+import { ArcadeButtonProps } from "react-native-nongeo-world";
 ```
 
-## 라이센스
+---
+
+## License
 
 MIT © Nongeoking
-
