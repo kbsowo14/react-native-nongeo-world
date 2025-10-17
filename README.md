@@ -25,7 +25,7 @@ yarn add react-native-nongeo-world
 A 3D-styled arcade button component with press animations and customizable appearance.
 
 <p align="center">
-  <img src="./public/ArcadeButton_examples.gif" alt="ArcadeButton Examples" width="280" />
+  <img src="./public/ArcadeButton_examples.gif" alt="ArcadeButton Examples" width="240" />
 </p>
 
 #### Basic Usage
