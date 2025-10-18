@@ -6,6 +6,16 @@
 
 ## Installation
 
+First, make sure you have the peer dependency installed:
+
+```bash
+npm install react-native-reanimated
+```
+
+> **Note:** `react-native-reanimated` is a native module and requires additional setup. Please refer to the [official documentation](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/) for installation instructions.
+
+Then install this library:
+
 ```bash
 npm install react-native-nongeo-world
 ```
@@ -89,21 +99,19 @@ import { View, Text } from 'react-native';
 
 #### Props
 
-| Prop                | Type                        | Default     | Description                                            |
-| ------------------- | --------------------------- | ----------- | ------------------------------------------------------ |
-| `buttonText`        | `string \| React.ReactNode` | `''`        | Button text or custom component                        |
-| `buttonTextStyle`   | `StyleProp<TextStyle>`      | `undefined` | Text style for button text                             |
-| `backgroundColor`   | `string`                    | `'#f97316'` | Button background color                                |
-| `paddingVertical`   | `number`                    | `12`        | Vertical padding                                       |
-| `paddingHorizontal` | `number`                    | `24`        | Horizontal padding                                     |
-| `buttonRadius`      | `number \| string`          | `12`        | Border radius (supports percentage values like "100%") |
-| `thickness`         | `number`                    | `8`         | 3D depth effect thickness                              |
-| `hasBorder`         | `boolean`                   | `true`      | Show shadow border around button                       |
-| `disabled`          | `boolean`                   | `false`     | Disable button interaction                             |
-| `isLoading`         | `boolean \| null`           | `null`      | Show loading indicator                                 |
-| `onPress`           | `() => void`                | `undefined` | Press event handler                                    |
-| `isFullWidth`       | `boolean`                   | `false`     | Make button full width                                 |
-| `children`          | `React.ReactNode`           | `undefined` | Custom content inside button                           |
+| Prop                | Type               | Default     | Description                                            |
+| ------------------- | ------------------ | ----------- | ------------------------------------------------------ |
+| `backgroundColor`   | `string`           | `'#f97316'` | Button background color                                |
+| `paddingVertical`   | `number`           | `12`        | Vertical padding                                       |
+| `paddingHorizontal` | `number`           | `24`        | Horizontal padding                                     |
+| `buttonRadius`      | `number \| string` | `12`        | Border radius (supports percentage values like "100%") |
+| `thickness`         | `number`           | `8`         | 3D depth effect thickness                              |
+| `hasBorder`         | `boolean`          | `true`      | Show shadow border around button                       |
+| `disabled`          | `boolean`          | `false`     | Disable button interaction                             |
+| `isLoading`         | `boolean \| null`  | `null`      | Show loading indicator                                 |
+| `onPress`           | `() => void`       | `undefined` | Press event handler                                    |
+| `isFullWidth`       | `boolean`          | `false`     | Make button full width                                 |
+| `children`          | `React.ReactNode`  | `undefined` | Custom content inside button                           |
 
 ---
 
@@ -114,9 +122,3 @@ All components are written in TypeScript with full type definitions included.
 ```tsx
 import { ArcadeButtonProps } from "react-native-nongeo-world";
 ```
-
----
-
-## License
-
-MIT © Nongeoking

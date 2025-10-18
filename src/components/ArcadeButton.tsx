@@ -2,17 +2,11 @@ import React, { memo, useCallback, useRef, useState } from 'react'
 import { 
   ActivityIndicator, 
   Animated, 
-  View, 
-  Text, 
+  View,
   Pressable,
-  ViewStyle,
-  TextStyle,
-  StyleProp
 } from 'react-native'
 
 export interface ArcadeButtonProps {
-  buttonText?: string | React.ReactNode
-  buttonTextStyle?: StyleProp<TextStyle>
   backgroundColor?: string
   paddingVertical?: number
   paddingHorizontal?: number
@@ -28,8 +22,6 @@ export interface ArcadeButtonProps {
 
 /**
  * 게임화면에 사용되는 3D 스타일 버튼
- * @param buttonText - 버튼 텍스트 또는 커스텀 컴포넌트
- * @param buttonTextStyle - 버튼 텍스트 스타일
  * @param backgroundColor - 버튼 배경색 (기본: '#f97316')
  * @param paddingVertical - 수직 패딩 (기본: 12)
  * @param paddingHorizontal - 수평 패딩 (기본: 24)
@@ -43,8 +35,6 @@ export interface ArcadeButtonProps {
  * @param children - 버튼 내부 컴포넌트
  */
 const ArcadeButton: React.FC<ArcadeButtonProps> = ({
-  buttonText = '',
-  buttonTextStyle,
   backgroundColor = '#f97316',
   paddingVertical = 12,
   paddingHorizontal = 24,
