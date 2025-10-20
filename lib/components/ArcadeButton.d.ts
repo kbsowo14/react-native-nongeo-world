@@ -1,8 +1,5 @@
 import React from 'react';
-import { TextStyle, StyleProp } from 'react-native';
 export interface ArcadeButtonProps {
-    buttonText?: string | React.ReactNode;
-    buttonTextStyle?: StyleProp<TextStyle>;
     backgroundColor?: string;
     paddingVertical?: number;
     paddingHorizontal?: number;
